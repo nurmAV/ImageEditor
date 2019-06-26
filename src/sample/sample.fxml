@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 
-<BorderPane fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="913.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <top>
-      <MenuBar style="-fx-background-color: linear-gradient(#333, #444);" BorderPane.alignment="CENTER">
+
+<VBox fx:id="layout" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <MenuBar style="-fx-background-color: linear-gradient(#777, #666);" VBox.vgrow="ALWAYS">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#open" text="Open" />
-              <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem fx:id="openMenuButton" mnemonicParsing="false" onAction="#open" text="Open" />
+              <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -32,26 +29,24 @@
           </Menu>
         </menus>
       </MenuBar>
-   </top>
-   <left>
-      <VBox prefHeight="598.0" prefWidth="207.0" style="-fx-background-color: linear-gradient(#444, #555);" BorderPane.alignment="CENTER" />
-   </left>
-   <bottom>
-      <AnchorPane prefHeight="22.0" prefWidth="972.0" style="-fx-background-color: linear-gradient(#555, #666);" BorderPane.alignment="CENTER">
+      <HBox fx:id="middleRow" prefHeight="758.0" prefWidth="1296.0" style="-fx-background-color: #EFEFEF;" VBox.vgrow="ALWAYS">
          <children>
-            <Text layoutX="14.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
-         </children></AnchorPane>
-   </bottom>
-   <center>
-      <HBox fx:id="imageContainer" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #888888;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="original" fitHeight="628.0" fitWidth="433.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../Kuvat/Tallinn%2018.5.%20-%2019.5.2019/IMG_20190518_214013.jpg" />
-               </image>
+            <VBox prefHeight="765.0" prefWidth="234.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="ALWAYS" />
+            <ImageView fx:id="original" fitHeight="761.0" fitWidth="517.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+               <cursor>
+                  <Cursor fx:constant="CROSSHAIR" />
+               </cursor>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
             </ImageView>
-            <ImageView fx:id="changed" fitHeight="633.0" fitWidth="405.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="changed" fitHeight="765.0" fitWidth="541.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+               <cursor>
+                  <Cursor fx:constant="CROSSHAIR" />
+               </cursor>
+            </ImageView>
          </children>
       </HBox>
-   </center>
-</BorderPane>
+      <AnchorPane prefHeight="25.0" prefWidth="1296.0" style="-fx-background-color: linear-gradient(#666, #777);" />
+   </children>
+</VBox>

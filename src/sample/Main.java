@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         setUserAgentStylesheet(STYLESHEET_CASPIAN);
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Image Editor");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
