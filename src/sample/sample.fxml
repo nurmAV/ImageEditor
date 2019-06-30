@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 
 <VBox fx:id="layout" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
@@ -29,10 +30,10 @@
           </Menu>
         </menus>
       </MenuBar>
-      <HBox fx:id="middleRow" prefHeight="758.0" prefWidth="1296.0" style="-fx-background-color: #EFEFEF;" VBox.vgrow="ALWAYS">
+      <HBox fx:id="middleRow" alignment="TOP_CENTER" prefHeight="758.0" prefWidth="1296.0" style="-fx-background-color: #EFEFEF;" VBox.vgrow="ALWAYS">
          <children>
-            <VBox prefHeight="765.0" prefWidth="234.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="ALWAYS" />
-            <ImageView fx:id="original" fitHeight="761.0" fitWidth="517.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="761.0" prefWidth="183.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="ALWAYS" />
+            <ImageView fx:id="workingImage" fitHeight="761.0" fitWidth="919.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                <cursor>
                   <Cursor fx:constant="CROSSHAIR" />
                </cursor>
@@ -40,11 +41,24 @@
                   <Insets />
                </HBox.margin>
             </ImageView>
-            <ImageView fx:id="changed" fitHeight="765.0" fitWidth="541.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-               <cursor>
-                  <Cursor fx:constant="CROSSHAIR" />
-               </cursor>
-            </ImageView>
+            <VBox fx:id="fileInfo" alignment="TOP_CENTER" prefHeight="761.0" prefWidth="234.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="ALWAYS">
+               <children>
+                  <Text fx:id="filename" fill="#efefef" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="15.0" top="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="blur" mnemonicParsing="false" text="Blur" />
+                  <Button fx:id="sobelY" mnemonicParsing="false" onAction="#sobelY" text="SobelY" />
+                  <Button fx:id="sobelX" mnemonicParsing="false" onAction="#sobelX" text="SobelX" />
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
          </children>
       </HBox>
       <AnchorPane prefHeight="25.0" prefWidth="1296.0" style="-fx-background-color: linear-gradient(#666, #777);" />
