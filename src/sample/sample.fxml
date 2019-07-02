@@ -40,6 +40,9 @@
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <image>
+                  <Image url="@../../../../Kuvat/Berliini%208.6.-10.6.2019/IMG_20190608_175244.jpg" />
+               </image>
             </ImageView>
             <VBox fx:id="fileInfo" alignment="TOP_CENTER" prefHeight="761.0" prefWidth="234.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="ALWAYS">
                <children>
@@ -54,6 +57,8 @@
                   <Button fx:id="blur" mnemonicParsing="false" text="Blur" />
                   <Button fx:id="sobelY" mnemonicParsing="false" text="SobelY" />
                   <Button fx:id="sobelX" mnemonicParsing="false" text="SobelX" />
+                  <Button fx:id="edge" mnemonicParsing="false" text="Edge" />
+                  <Button fx:id="grayscale" mnemonicParsing="false" text="Grayscale" />
                </children>
                <HBox.margin>
                   <Insets />

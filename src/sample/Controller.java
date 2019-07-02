@@ -36,7 +36,7 @@ public class Controller implements Initializable {
     @FXML
     public Text filename;
     @FXML
-    public Button blur, sobelX, sobelY;
+    public Button blur, sobelX, sobelY, edge, grayscale;
 
     private BufferedImage workingBufferedImage = null;
     @Override
@@ -44,6 +44,8 @@ public class Controller implements Initializable {
         blur  .setOnAction(e -> changeImage(blur(20)));
         sobelX.setOnAction(e -> changeImage(sobelX()));
         sobelY.setOnAction(e ->changeImage(sobelY()));
+        edge  .setOnAction(e ->changeImage(completeSobel()));
+        grayscale.setOnAction(e -> changeImage(grayscale()));
 
 
     }
@@ -54,7 +56,6 @@ public class Controller implements Initializable {
         ((Stage) layout.getScene().getWindow()).setTitle(file.getName() + " - Image Editor");
         System.out.println(middleRow.heightProperty());
         workingImage.fitHeightProperty().bind(middleRow.heightProperty());
-        //original.fitWidthProperty().bind(middleRow.widthProperty());
         try {
             BufferedImage bi = ImageIO.read(file);
             workingBufferedImage = bi;
@@ -63,55 +64,144 @@ public class Controller implements Initializable {
 
             e.printStackTrace();
         }
+        catch(NullPointerException e){
+
+        }
     }
 
+    /** Closes the main window */
     public void close() {
         Stage s = (Stage) layout.getScene().getWindow();
         s.close();
     }
 
-
+    /**
+     * Performs a standard mean blur
+     * @param size The width of the convolution kernel, i.e. how much blur asked for
+     * @return Blurred image as BufferedImage
+     */
     public BufferedImage blur(int size) {
-        BufferedImage res = new BufferedImage(workingBufferedImage.getWidth(), workingBufferedImage.getHeight(), workingBufferedImage.getType());
+        return blur(workingBufferedImage, size);
+    }
+
+
+    public BufferedImage blur(BufferedImage img, int size) {
+        BufferedImage res = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         float[] data = new float[size * size];
         for(int i = 0; i < size * size; i++) {
             data[i] = 1f/(size*size);
         }
         Kernel kernel = new Kernel(size, size, data);
         ConvolveOp op = new ConvolveOp(kernel);
-        op.filter(workingBufferedImage, res);
-        //workingBufferedImage = res;
-        //workingImage.setImage(SwingFXUtils.toFXImage(res, null));
+        op.filter(img, res);
+
         return res;
     }
-    public BufferedImage sobelY() {
-        System.out.println("Sobel Y");
-        BufferedImage dest = new BufferedImage(workingBufferedImage.getWidth(), workingBufferedImage.getHeight(), workingBufferedImage.getType());
+
+    /**
+     * Performs a vertical (Y-direction) Sobel filtration on given image
+     * @param img the image to be filtered
+     * @return the filtered image as BufferedImage
+     */
+    public BufferedImage sobelY(BufferedImage img) {
+
+        BufferedImage dest = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         float[] data = {-1, 0, 1,
                         -2, 0, 2,
                         -1, 0, 1};
         ConvolveOp op = new ConvolveOp(new Kernel(3, 3, data));
-        op.filter(workingBufferedImage, dest);
-        //workingBufferedImage = dest;
-        //workingImage.setImage(SwingFXUtils.toFXImage(workingBufferedImage, null));
+        op.filter(img, dest);
+
         return dest;
     }
+    /**
+     * Performs a horizontal(X-direction) Sobel filtration on given image
+     * @param img the image to be filtered
+     * @return the filtered image as BufferedImage
+     */
+    public BufferedImage sobelX(BufferedImage img) {
 
-    public BufferedImage sobelX() {
-        System.out.println("Sobel X");
-        BufferedImage dest = new BufferedImage(workingBufferedImage.getWidth(), workingBufferedImage.getHeight(), workingBufferedImage.getType());
-        //workingImage.setImage(SwingFXUtils.toFXImage(bi, null));
+        BufferedImage dest = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         float[] data = {-1, -2, -1,
                          0,  0,  0,
                          1,  2,  1};
         ConvolveOp op = new ConvolveOp(new Kernel(3, 3, data));
-        op.filter(workingBufferedImage, dest);
-        //workingBufferedImage = dest;
-       // workingImage.setImage(SwingFXUtils.toFXImage(workingBufferedImage, null));
+        op.filter(img, dest);
+
         return dest;
     }
 
+    public BufferedImage sobelX() {
+        return sobelX(workingBufferedImage);
+    }
 
+    public BufferedImage sobelY() {
+        return sobelY(workingBufferedImage);
+    }
+
+
+    public BufferedImage completeSobel(BufferedImage img) {
+        BufferedImage res = blur(grayscale(),5);
+        System.out.println("Blurred ...");
+        BufferedImage x = sobelX(res);
+        System.out.println("Sobel X done ...");
+        BufferedImage y = sobelY(res);
+        System.out.println("Sobel Y done ...");
+
+        for(int i = 0; i < x.getWidth(); i++) {
+            for(int j = 0; j < x.getHeight(); j++) {
+                int c1 = x.getRGB(i, j);
+                int c2 = y.getRGB(i,j);
+                res.setRGB(i,j, pixelOp(c1, c2));
+            }
+        }
+        System.out.println("Combination done ...");
+        return res;
+    }
+
+    private int pixelOp(int c1, int c2) {
+        int r1 = (c1 & 0x00ff0000) >> 16;
+        int g1 = (c1 & 0x0000ff00) >> 8;
+        int b1 =  c1 & 0x000000ff;
+
+        int r2 = (c2 & 0x00ff0000) >> 16;
+        int g2 = (c2 & 0x0000ff00) >> 8;
+        int b2 =  c2 & 0x000000ff;
+
+        int r = (int) Math.sqrt(r1 * r1 + r2 * r2);
+        int g = (int) Math.sqrt(g1 * g1 + g2 * g2);
+        int b = (int) Math.sqrt(b1 * b1 + b2 * b2);
+
+        int res = (r << 16) + (g << 8) + b;
+        return res;
+
+
+    }
+
+    public BufferedImage completeSobel() {
+        return completeSobel(workingBufferedImage);
+    }
+
+    public BufferedImage grayscale(BufferedImage img) {
+        BufferedImage res = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+        for(int x = 0; x < img.getWidth(); x++) {
+            for(int y = 0; y < img.getHeight(); y++) {
+                int c = img.getRGB(x,y);
+                int r = (c & 0x00ff0000) >> 16;
+                int g = (c & 0x0000ff00) >> 8;
+                int b =  c & 0x000000ff;
+
+                int avg = (int)((r + g + b) /3f);
+                int newColor = (avg << 16) + (avg << 8) + avg;
+                res.setRGB(x,y, newColor);
+            }
+        }
+        return res;
+    }
+
+    public BufferedImage grayscale() {
+        return grayscale(workingBufferedImage);
+    }
     private void changeImage(BufferedImage img) {
         workingBufferedImage = img;
         workingImage.setImage(SwingFXUtils.toFXImage(img, null));
