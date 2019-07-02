@@ -52,8 +52,8 @@
                      </font>
                   </Text>
                   <Button fx:id="blur" mnemonicParsing="false" text="Blur" />
-                  <Button fx:id="sobelY" mnemonicParsing="false" onAction="#sobelY" text="SobelY" />
-                  <Button fx:id="sobelX" mnemonicParsing="false" onAction="#sobelX" text="SobelX" />
+                  <Button fx:id="sobelY" mnemonicParsing="false" text="SobelY" />
+                  <Button fx:id="sobelX" mnemonicParsing="false" text="SobelX" />
                </children>
                <HBox.margin>
                   <Insets />

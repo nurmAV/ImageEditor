@@ -7,13 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
-
 import javafx.scene.layout.HBox;
-
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.image.ConvolveOp;
@@ -36,12 +36,14 @@ public class Controller implements Initializable {
     @FXML
     public Text filename;
     @FXML
-    public Button blur;
+    public Button blur, sobelX, sobelY;
 
     private BufferedImage workingBufferedImage = null;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        blur  .setOnAction(e -> changeImage(blur(20)));
+        sobelX.setOnAction(e -> changeImage(sobelX()));
+        sobelY.setOnAction(e ->changeImage(sobelY()));
 
 
     }
@@ -78,19 +80,20 @@ public class Controller implements Initializable {
         Kernel kernel = new Kernel(size, size, data);
         ConvolveOp op = new ConvolveOp(kernel);
         op.filter(workingBufferedImage, res);
+        //workingBufferedImage = res;
+        //workingImage.setImage(SwingFXUtils.toFXImage(res, null));
         return res;
     }
     public BufferedImage sobelY() {
         System.out.println("Sobel Y");
         BufferedImage dest = new BufferedImage(workingBufferedImage.getWidth(), workingBufferedImage.getHeight(), workingBufferedImage.getType());
-        //workingImage.setImage(SwingFXUtils.toFXImage(bi, null));
         float[] data = {-1, 0, 1,
                         -2, 0, 2,
                         -1, 0, 1};
         ConvolveOp op = new ConvolveOp(new Kernel(3, 3, data));
         op.filter(workingBufferedImage, dest);
-        workingBufferedImage = dest;
-        workingImage.setImage(SwingFXUtils.toFXImage(workingBufferedImage, null));
+        //workingBufferedImage = dest;
+        //workingImage.setImage(SwingFXUtils.toFXImage(workingBufferedImage, null));
         return dest;
     }
 
@@ -103,11 +106,15 @@ public class Controller implements Initializable {
                          1,  2,  1};
         ConvolveOp op = new ConvolveOp(new Kernel(3, 3, data));
         op.filter(workingBufferedImage, dest);
-        workingBufferedImage = dest;
-        workingImage.setImage(SwingFXUtils.toFXImage(workingBufferedImage, null));
+        //workingBufferedImage = dest;
+       // workingImage.setImage(SwingFXUtils.toFXImage(workingBufferedImage, null));
         return dest;
     }
 
 
+    private void changeImage(BufferedImage img) {
+        workingBufferedImage = img;
+        workingImage.setImage(SwingFXUtils.toFXImage(img, null));
+    }
 
 }
