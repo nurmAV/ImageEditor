@@ -54,7 +54,6 @@ public class Controller implements Initializable {
 
         undoItem.setDisable(true);
 
-
     }
 
     public void open() {

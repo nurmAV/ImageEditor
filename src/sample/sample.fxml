@@ -33,18 +33,13 @@
       </MenuBar>
       <HBox fx:id="middleRow" alignment="TOP_CENTER" prefHeight="758.0" prefWidth="1296.0" style="-fx-background-color: #EFEFEF;" VBox.vgrow="ALWAYS">
          <children>
-            <VBox prefHeight="761.0" prefWidth="183.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="ALWAYS" />
-            <ImageView fx:id="workingImage" fitHeight="761.0" fitWidth="919.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-               <cursor>
-                  <Cursor fx:constant="CROSSHAIR" />
-               </cursor>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <image>
-                  <Image url="@../../../../Kuvat/Berliini%208.6.-10.6.2019/IMG_20190608_175244.jpg" />
-               </image>
-            </ImageView>
+            <VBox prefHeight="758.0" prefWidth="257.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="ALWAYS" />
+            <AnchorPane prefHeight="758.0" prefWidth="922.0" style="-fx-background-color: #999;" HBox.hgrow="ALWAYS">
+               <children>
+                  <Region layoutX="75.0" layoutY="90.0" prefHeight="579.0" prefWidth="743.0" style="-fx-border-color: #555; -fx-background-color: #EFEFEF;" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="90.0" />
+                  <ImageView fx:id="workingImage" fitHeight="579.0" fitWidth="733.0" layoutX="78.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
             <VBox fx:id="fileInfo" alignment="TOP_CENTER" prefHeight="761.0" prefWidth="234.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="ALWAYS">
                <children>
                   <Text fx:id="filename" fill="#efefef" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename" VBox.vgrow="ALWAYS">
@@ -67,6 +62,9 @@
             </VBox>
          </children>
       </HBox>
-      <AnchorPane prefHeight="25.0" prefWidth="1296.0" style="-fx-background-color: linear-gradient(#666, #777);" />
+      <AnchorPane prefHeight="25.0" prefWidth="1296.0" style="-fx-background-color: linear-gradient(#666, #777);">
+         <children>
+            <Text fx:id="Status" fill="#efefef" layoutX="22.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ready." />
+         </children></AnchorPane>
    </children>
 </VBox>
