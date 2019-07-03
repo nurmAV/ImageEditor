@@ -52,6 +52,8 @@ public class Controller implements Initializable {
         grayscale.setOnAction(e -> changeImage(grayscale()));
         undoItem.setOnAction( e -> undo());
 
+        undoItem.setDisable(true);
+
 
     }
 
@@ -66,6 +68,7 @@ public class Controller implements Initializable {
             workingBufferedImage = bi;
             workingImage.setImage(SwingFXUtils.toFXImage(bi, null));
             imageStack.push(workingBufferedImage);
+            System.out.println("Image Stack Size: " + imageStack.size());
         } catch (IOException e) {
 
             e.printStackTrace();
@@ -147,12 +150,10 @@ public class Controller implements Initializable {
 
 
     public BufferedImage completeSobel(BufferedImage img) {
+
         BufferedImage res = blur(grayscale(),5);
-        System.out.println("Blurred ...");
         BufferedImage x = sobelX(res);
-        System.out.println("Sobel X done ...");
         BufferedImage y = sobelY(res);
-        System.out.println("Sobel Y done ...");
 
         for(int i = 0; i < x.getWidth(); i++) {
             for(int j = 0; j < x.getHeight(); j++) {
@@ -161,7 +162,7 @@ public class Controller implements Initializable {
                 res.setRGB(i,j, pixelOp(c1, c2));
             }
         }
-        System.out.println("Combination done ...");
+
         return res;
     }
 
@@ -210,17 +211,19 @@ public class Controller implements Initializable {
     }
 
     private void changeImage(BufferedImage img) {
+        if(undoItem.isDisable()) undoItem.setDisable(false);
         workingBufferedImage = img;
         imageStack.push(workingBufferedImage);
         workingImage.setImage(SwingFXUtils.toFXImage(img, null));
+        System.out.println("Image Stack Size: " +imageStack.size());
     }
 
     public void undo() {
-        if (!imageStack.isEmpty()) {
+        if ((imageStack.size() > 1)) {
 
             imageStack.pop(); // Remove the current image from the stack
             workingImage.setImage(SwingFXUtils.toFXImage(imageStack.peek(), null));
-
+            System.out.println("Image Stack Size: " +imageStack.size());
         }else undoItem.setDisable(true);
     }
 
