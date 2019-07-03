@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import java.util.Stack;
+
 public class Controller implements Initializable {
 
     @FXML
@@ -30,7 +32,7 @@ public class Controller implements Initializable {
     @FXML
     public ImageView workingImage;
     @FXML
-    public MenuItem openMenuButton;
+    public MenuItem openMenuButton, undoItem;
     @FXML
     public HBox middleRow;
     @FXML
@@ -39,13 +41,16 @@ public class Controller implements Initializable {
     public Button blur, sobelX, sobelY, edge, grayscale;
 
     private BufferedImage workingBufferedImage = null;
+
+    private Stack<BufferedImage> imageStack = new Stack<>();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        blur  .setOnAction(e -> changeImage(blur(20)));
-        sobelX.setOnAction(e -> changeImage(sobelX()));
-        sobelY.setOnAction(e ->changeImage(sobelY()));
-        edge  .setOnAction(e ->changeImage(completeSobel()));
+        blur  .setOnAction(   e -> changeImage(blur(20)));
+        sobelX.setOnAction(   e -> changeImage(sobelX()));
+        sobelY.setOnAction(   e -> changeImage(sobelY()));
+        edge  .setOnAction(   e -> changeImage(completeSobel()));
         grayscale.setOnAction(e -> changeImage(grayscale()));
+        undoItem.setOnAction( e -> undo());
 
 
     }
@@ -60,6 +65,7 @@ public class Controller implements Initializable {
             BufferedImage bi = ImageIO.read(file);
             workingBufferedImage = bi;
             workingImage.setImage(SwingFXUtils.toFXImage(bi, null));
+            imageStack.push(workingBufferedImage);
         } catch (IOException e) {
 
             e.printStackTrace();
@@ -202,9 +208,20 @@ public class Controller implements Initializable {
     public BufferedImage grayscale() {
         return grayscale(workingBufferedImage);
     }
+
     private void changeImage(BufferedImage img) {
         workingBufferedImage = img;
+        imageStack.push(workingBufferedImage);
         workingImage.setImage(SwingFXUtils.toFXImage(img, null));
+    }
+
+    public void undo() {
+        if (!imageStack.isEmpty()) {
+
+            imageStack.pop(); // Remove the current image from the stack
+            workingImage.setImage(SwingFXUtils.toFXImage(imageStack.peek(), null));
+
+        }else undoItem.setDisable(true);
     }
 
 }
