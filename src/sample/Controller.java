@@ -1,12 +1,14 @@
 package sample;
 
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -15,12 +17,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
+import javafx.scene.input.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.security.Key;
 import java.util.ResourceBundle;
 
 import java.util.Stack;
@@ -54,6 +58,10 @@ public class Controller implements Initializable {
 
         undoItem.setDisable(true);
 
+
+
+
+
     }
 
     public void open() {
@@ -68,6 +76,13 @@ public class Controller implements Initializable {
             workingImage.setImage(SwingFXUtils.toFXImage(bi, null));
             imageStack.push(workingBufferedImage);
             System.out.println("Image Stack Size: " + imageStack.size());
+            layout.getScene().addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    if(event.isControlDown() && event.getCode() == KeyCode.Z) undo();
+
+                }
+            });
         } catch (IOException e) {
 
             e.printStackTrace();
