@@ -24,7 +24,6 @@ import java.awt.image.Kernel;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.security.Key;
 import java.util.ResourceBundle;
 
 import java.util.Stack;
@@ -42,18 +41,31 @@ public class Controller implements Initializable {
     @FXML
     public Text filename;
     @FXML
-    public Button blur, sobelX, sobelY, edge, grayscale;
+    public Button blur, sobelX, sobelY, edge, grayscale, redness, greenness, blueness, alpha;
 
-    private BufferedImage workingBufferedImage = null;
+    private BufferedImage workingBufferedImage   = null;
+
+    private ColorComponentEffect alphaEffect     = new ColorComponentEffect(Color.ALPHA);
+    private ColorComponentEffect rednessEffect   = new ColorComponentEffect(Color.RED);
+    private ColorComponentEffect greennessEffect = new ColorComponentEffect(Color.GREEN);
+    private ColorComponentEffect bluenessEffect  = new ColorComponentEffect(Color.BLUE);
 
     private Stack<BufferedImage> imageStack = new Stack<>();
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        blur  .setOnAction(   e -> changeImage(blur(20)));
-        sobelX.setOnAction(   e -> changeImage(sobelX()));
-        sobelY.setOnAction(   e -> changeImage(sobelY()));
-        edge  .setOnAction(   e -> changeImage(completeSobel()));
+        blur     .setOnAction(   e -> changeImage(blur(20)));
+        sobelX   .setOnAction(   e -> changeImage(sobelX()));
+        sobelY   .setOnAction(   e -> changeImage(sobelY()));
+        edge     .setOnAction(   e -> changeImage(completeSobel()));
         grayscale.setOnAction(e -> changeImage(grayscale()));
+
+        redness  .setOnMouseClicked(e -> changeImage(rednessEffect.filter(workingBufferedImage, 1.5f)));
+        greenness.setOnMouseClicked(e -> changeImage(greennessEffect.filter(workingBufferedImage, 1.5f)));
+        blueness .setOnMouseClicked(e -> changeImage(bluenessEffect.filter(workingBufferedImage, 1.5f)));
+        alpha    .setOnMouseClicked(e -> changeImage(alphaEffect.filter(workingBufferedImage, 1.5f)));
+
         undoItem.setOnAction( e -> undo());
 
         undoItem.setDisable(true);

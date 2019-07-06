@@ -55,6 +55,10 @@
                   <Button fx:id="sobelX" mnemonicParsing="false" text="SobelX" />
                   <Button fx:id="edge" mnemonicParsing="false" text="Edge" />
                   <Button fx:id="grayscale" mnemonicParsing="false" text="Grayscale" />
+                  <Button fx:id="redness" mnemonicParsing="false" text="Redness" />
+                  <Button fx:id="greenness" mnemonicParsing="false" text="Greenness" />
+                  <Button fx:id="blueness" mnemonicParsing="false" text="Blueness" />
+                  <Button fx:id="alpha" mnemonicParsing="false" text="Alpha" />
                </children>
                <HBox.margin>
                   <Insets />
