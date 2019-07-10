@@ -2,6 +2,7 @@ package sample;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -18,6 +20,8 @@ import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.WindowEvent;
+
 import java.awt.image.BufferedImage;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
@@ -41,7 +45,10 @@ public class Controller implements Initializable {
     @FXML
     public Text filename;
     @FXML
-    public Button blur, sobelX, sobelY, edge, grayscale, redness, greenness, blueness, alpha;
+    public Button blur, sobelX, sobelY, edge, grayscale, redness, greenness, blueness, alpha, text;
+    @FXML public AnchorPane imageBG;
+
+
 
     private BufferedImage workingBufferedImage   = null;
 
@@ -49,6 +56,7 @@ public class Controller implements Initializable {
     private ColorComponentEffect rednessEffect   = new ColorComponentEffect(Color.RED);
     private ColorComponentEffect greennessEffect = new ColorComponentEffect(Color.GREEN);
     private ColorComponentEffect bluenessEffect  = new ColorComponentEffect(Color.BLUE);
+    private TextEffect textEffect = new TextEffect();
 
     private Stack<BufferedImage> imageStack = new Stack<>();
 
@@ -66,8 +74,9 @@ public class Controller implements Initializable {
         blueness .setOnMouseClicked(e -> changeImage(bluenessEffect.filter(workingBufferedImage, 1.5f)));
         alpha    .setOnMouseClicked(e -> changeImage(alphaEffect.filter(workingBufferedImage, 1.5f)));
 
-        undoItem.setOnAction( e -> undo());
+        //text.setOnMouseClicked(e ->changeImage(textEffect.apply(workingBufferedImage, "Text",  50, 50, new Color())));
 
+        undoItem.setOnAction( e -> undo());
         undoItem.setDisable(true);
 
 
@@ -81,11 +90,12 @@ public class Controller implements Initializable {
         File file = fc.showOpenDialog(layout.getScene().getWindow());
         ((Stage) layout.getScene().getWindow()).setTitle(file.getName() + " - Image Editor");
         System.out.println(middleRow.heightProperty());
-        workingImage.fitHeightProperty().bind(middleRow.heightProperty());
+        workingImage.fitWidthProperty().bind(imageBG.widthProperty());
         try {
             BufferedImage bi = ImageIO.read(file);
             workingBufferedImage = bi;
             workingImage.setImage(SwingFXUtils.toFXImage(bi, null));
+            //workingImage.fitHeightProperty().bind(imageBG.heightProperty());
             imageStack.push(workingBufferedImage);
             System.out.println("Image Stack Size: " + imageStack.size());
             layout.getScene().addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {

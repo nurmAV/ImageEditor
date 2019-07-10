@@ -31,16 +31,33 @@
           </Menu>
         </menus>
       </MenuBar>
-      <HBox fx:id="middleRow" alignment="TOP_CENTER" prefHeight="758.0" prefWidth="1296.0" style="-fx-background-color: #EFEFEF;" VBox.vgrow="ALWAYS">
+      <HBox fx:id="toolRibbon" alignment="CENTER" prefHeight="85.0" prefWidth="1296.0" style="-fx-background-color: linear-gradient(#888, #555);">
          <children>
-            <VBox prefHeight="758.0" prefWidth="257.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="ALWAYS" />
-            <AnchorPane prefHeight="758.0" prefWidth="922.0" style="-fx-background-color: #999;" HBox.hgrow="ALWAYS">
+            <Button fx:id="sobelY" mnemonicParsing="false" text="SobelY" />
+            <Button fx:id="sobelX" mnemonicParsing="false" text="SobelX" />
+            <Button fx:id="edge" mnemonicParsing="false" text="Edge" />
+            <Button fx:id="grayscale" mnemonicParsing="false" text="Grayscale" />
+            <Button fx:id="redness" mnemonicParsing="false" text="Redness" />
+            <Button fx:id="greenness" mnemonicParsing="false" text="Greenness" />
+            <Button fx:id="blueness" mnemonicParsing="false" text="Blueness" />
+            <Button fx:id="alpha" mnemonicParsing="false" text="Alpha" />
+            <Button fx:id="text" mnemonicParsing="false" text="Add text" />
+            <Button fx:id="blur" mnemonicParsing="false" text="Blur" />
+         </children>
+      </HBox>
+      <HBox fx:id="middleRow" alignment="TOP_CENTER" prefHeight="663.0" prefWidth="1296.0" style="-fx-background-color: #EFEFEF;" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox prefHeight="758.0" prefWidth="257.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="NEVER" />
+            <AnchorPane prefHeight="707.0" prefWidth="883.0" style="-fx-background-color: #999; -fx-border-color: #55;" HBox.hgrow="ALWAYS">
                <children>
-                  <Region layoutX="75.0" layoutY="90.0" prefHeight="579.0" prefWidth="743.0" style="-fx-border-color: #555; -fx-background-color: #EFEFEF;" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="90.0" />
-                  <ImageView fx:id="workingImage" fitHeight="579.0" fitWidth="733.0" layoutX="78.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+                  <AnchorPane fx:id="imageBG" layoutX="15.0" layoutY="21.0" prefHeight="622.0" prefWidth="832.0" style="-fx-border-color: #777; -fx-background-color: #BCBCBC;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="21.0">
+                     <children>
+                        <ImageView fx:id="workingImage" fitHeight="614.0" fitWidth="828.0" layoutX="-2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
-            <VBox fx:id="fileInfo" alignment="TOP_CENTER" prefHeight="761.0" prefWidth="234.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="ALWAYS">
+            <VBox fx:id="fileInfo" alignment="TOP_CENTER" prefHeight="761.0" prefWidth="234.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="NEVER">
                <children>
                   <Text fx:id="filename" fill="#efefef" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename" VBox.vgrow="ALWAYS">
                      <VBox.margin>
@@ -50,15 +67,6 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <Button fx:id="blur" mnemonicParsing="false" text="Blur" />
-                  <Button fx:id="sobelY" mnemonicParsing="false" text="SobelY" />
-                  <Button fx:id="sobelX" mnemonicParsing="false" text="SobelX" />
-                  <Button fx:id="edge" mnemonicParsing="false" text="Edge" />
-                  <Button fx:id="grayscale" mnemonicParsing="false" text="Grayscale" />
-                  <Button fx:id="redness" mnemonicParsing="false" text="Redness" />
-                  <Button fx:id="greenness" mnemonicParsing="false" text="Greenness" />
-                  <Button fx:id="blueness" mnemonicParsing="false" text="Blueness" />
-                  <Button fx:id="alpha" mnemonicParsing="false" text="Alpha" />
                </children>
                <HBox.margin>
                   <Insets />
