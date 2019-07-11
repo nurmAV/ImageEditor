@@ -31,28 +31,32 @@
           </Menu>
         </menus>
       </MenuBar>
-      <HBox fx:id="toolRibbon" alignment="CENTER" prefHeight="85.0" prefWidth="1296.0" style="-fx-background-color: linear-gradient(#888, #555);">
+      <VBox fx:id="controlVBox" prefHeight="108.0" prefWidth="1296.0">
          <children>
-            <Button fx:id="sobelY" mnemonicParsing="false" text="SobelY" />
-            <Button fx:id="sobelX" mnemonicParsing="false" text="SobelX" />
-            <Button fx:id="edge" mnemonicParsing="false" text="Edge" />
-            <Button fx:id="grayscale" mnemonicParsing="false" text="Grayscale" />
-            <Button fx:id="redness" mnemonicParsing="false" text="Redness" />
-            <Button fx:id="greenness" mnemonicParsing="false" text="Greenness" />
-            <Button fx:id="blueness" mnemonicParsing="false" text="Blueness" />
-            <Button fx:id="alpha" mnemonicParsing="false" text="Alpha" />
-            <Button fx:id="text" mnemonicParsing="false" text="Add text" />
-            <Button fx:id="blur" mnemonicParsing="false" text="Blur" />
+            <HBox fx:id="toolRibbon" alignment="CENTER" prefHeight="42.0" prefWidth="1296.0" style="-fx-background-color: linear-gradient(#888, #555);">
+               <children>
+                  <Button fx:id="sobelY" mnemonicParsing="false" text="SobelY" />
+                  <Button fx:id="sobelX" mnemonicParsing="false" text="SobelX" />
+                  <Button fx:id="edge" mnemonicParsing="false" text="Edge" />
+                  <Button fx:id="grayscale" mnemonicParsing="false" text="Grayscale" />
+                  <Button fx:id="redness" mnemonicParsing="false" text="Redness" />
+                  <Button fx:id="greenness" mnemonicParsing="false" text="Greenness" />
+                  <Button fx:id="blueness" mnemonicParsing="false" text="Blueness" />
+                  <Button fx:id="alpha" mnemonicParsing="false" text="Alpha" />
+                  <Button fx:id="text" mnemonicParsing="false" text="Add text" />
+                  <Button fx:id="blur" mnemonicParsing="false" text="Blur" />
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
       <HBox fx:id="middleRow" alignment="TOP_CENTER" prefHeight="663.0" prefWidth="1296.0" style="-fx-background-color: #EFEFEF;" VBox.vgrow="ALWAYS">
          <children>
             <VBox prefHeight="758.0" prefWidth="257.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="NEVER" />
-            <AnchorPane prefHeight="707.0" prefWidth="883.0" style="-fx-background-color: #999; -fx-border-color: #55;" HBox.hgrow="ALWAYS">
+            <AnchorPane prefHeight="707.0" prefWidth="883.0" style="-fx-background-color: #999; -fx-border-color: #555;" HBox.hgrow="ALWAYS">
                <children>
                   <AnchorPane fx:id="imageBG" layoutX="15.0" layoutY="21.0" prefHeight="622.0" prefWidth="832.0" style="-fx-border-color: #777; -fx-background-color: #BCBCBC;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="21.0">
                      <children>
-                        <ImageView fx:id="workingImage" fitHeight="614.0" fitWidth="828.0" layoutX="-2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" />
+                        <ImageView fx:id="workingImage" fitHeight="614.0" fitWidth="828.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="3.0" />
                      </children>
                   </AnchorPane>
                </children>

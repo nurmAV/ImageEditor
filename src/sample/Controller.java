@@ -35,13 +35,13 @@ import java.util.Stack;
 public class Controller implements Initializable {
 
     @FXML
-    public VBox layout;
+    public VBox layout, controlVBox;
     @FXML
     public ImageView workingImage;
     @FXML
     public MenuItem openMenuButton, undoItem;
     @FXML
-    public HBox middleRow;
+    public HBox middleRow, toolRibbon;
     @FXML
     public Text filename;
     @FXML
@@ -73,6 +73,7 @@ public class Controller implements Initializable {
         greenness.setOnMouseClicked(e -> changeImage(greennessEffect.filter(workingBufferedImage, 1.5f)));
         blueness .setOnMouseClicked(e -> changeImage(bluenessEffect.filter(workingBufferedImage, 1.5f)));
         alpha    .setOnMouseClicked(e -> changeImage(alphaEffect.filter(workingBufferedImage, 1.5f)));
+        controlVBox.getChildren().add(new SharpnessTools());
 
         //text.setOnMouseClicked(e ->changeImage(textEffect.apply(workingBufferedImage, "Text",  50, 50, new Color())));
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="600.0" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="64.0" prefWidth="249.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Blur">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Text>
+            <Slider fx:id="blurSlider">
+               <padding>
+                  <Insets left="10.0" right="10.0" top="1.0" />
+               </padding>
+            </Slider>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <VBox prefHeight="64.0" prefWidth="202.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sharpen">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+            <Slider fx:id="sharpenSlider" prefHeight="14.0" prefWidth="232.0">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Slider>
+         </children>
+      </VBox>
+   </children>
+</fx:root>
