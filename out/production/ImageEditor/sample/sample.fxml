@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 
-<BorderPane fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="913.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <top>
-      <MenuBar style="-fx-background-color: linear-gradient(#333, #444);" BorderPane.alignment="CENTER">
+<VBox fx:id="layout" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <MenuBar style="-fx-background-color: linear-gradient(#777, #666);" VBox.vgrow="ALWAYS">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#open" text="Open" />
-              <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem fx:id="openMenuButton" mnemonicParsing="false" onAction="#open" text="Open" />
+              <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem fx:id="undoItem" mnemonicParsing="false" text="Undo" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -32,26 +31,52 @@
           </Menu>
         </menus>
       </MenuBar>
-   </top>
-   <left>
-      <VBox prefHeight="598.0" prefWidth="207.0" style="-fx-background-color: linear-gradient(#444, #555);" BorderPane.alignment="CENTER" />
-   </left>
-   <bottom>
-      <AnchorPane prefHeight="22.0" prefWidth="972.0" style="-fx-background-color: linear-gradient(#555, #666);" BorderPane.alignment="CENTER">
+      <HBox fx:id="toolRibbon" alignment="CENTER" prefHeight="85.0" prefWidth="1296.0" style="-fx-background-color: linear-gradient(#888, #555);">
          <children>
-            <Text layoutX="14.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
-         </children></AnchorPane>
-   </bottom>
-   <center>
-      <HBox fx:id="imageContainer" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #888888;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="original" fitHeight="628.0" fitWidth="433.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../Kuvat/Tallinn%2018.5.%20-%2019.5.2019/IMG_20190518_214013.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="changed" fitHeight="633.0" fitWidth="405.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="sobelY" mnemonicParsing="false" text="SobelY" />
+            <Button fx:id="sobelX" mnemonicParsing="false" text="SobelX" />
+            <Button fx:id="edge" mnemonicParsing="false" text="Edge" />
+            <Button fx:id="grayscale" mnemonicParsing="false" text="Grayscale" />
+            <Button fx:id="redness" mnemonicParsing="false" text="Redness" />
+            <Button fx:id="greenness" mnemonicParsing="false" text="Greenness" />
+            <Button fx:id="blueness" mnemonicParsing="false" text="Blueness" />
+            <Button fx:id="alpha" mnemonicParsing="false" text="Alpha" />
+            <Button fx:id="text" mnemonicParsing="false" text="Add text" />
+            <Button fx:id="blur" mnemonicParsing="false" text="Blur" />
          </children>
       </HBox>
-   </center>
-</BorderPane>
+      <HBox fx:id="middleRow" alignment="TOP_CENTER" prefHeight="663.0" prefWidth="1296.0" style="-fx-background-color: #EFEFEF;" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox prefHeight="758.0" prefWidth="257.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="NEVER" />
+            <AnchorPane prefHeight="707.0" prefWidth="883.0" style="-fx-background-color: #999; -fx-border-color: #555;" HBox.hgrow="ALWAYS">
+               <children>
+                  <AnchorPane fx:id="imageBG" layoutX="15.0" layoutY="21.0" prefHeight="622.0" prefWidth="832.0" style="-fx-border-color: #777; -fx-background-color: #BCBCBC;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="21.0">
+                     <children>
+                        <ImageView fx:id="workingImage" fitHeight="614.0" fitWidth="828.0" layoutX="-2.0" layoutY="2.0" pickOnBounds="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <VBox fx:id="fileInfo" alignment="TOP_CENTER" prefHeight="761.0" prefWidth="234.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="NEVER">
+               <children>
+                  <Text fx:id="filename" fill="#efefef" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="15.0" top="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <AnchorPane prefHeight="25.0" prefWidth="1296.0" style="-fx-background-color: linear-gradient(#666, #777);">
+         <children>
+            <Text fx:id="Status" fill="#efefef" layoutX="22.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ready." />
+         </children></AnchorPane>
+   </children>
+</VBox>

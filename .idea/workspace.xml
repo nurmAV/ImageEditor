@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageEditor/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageEditor/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageEditor/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageEditor/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageEditor/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageEditor/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
+    </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -64,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,11 +81,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="34" column="78" selection-start-line="34" selection-start-column="78" selection-end-line="34" selection-end-column="78" />
+            <state relative-caret-position="1054">
+              <caret line="92" column="67" selection-start-line="92" selection-start-column="67" selection-end-line="92" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/TextEffect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/ColorComponentEffect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Color.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="24" column="66" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -88,7 +124,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+              <caret line="41" column="79" lean-forward="true" selection-start-line="41" selection-start-column="79" selection-end-line="41" selection-end-column="79" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -96,17 +132,38 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/ColorComponent.java" />
+        <option value="$PROJECT_DIR$/src/sample/ColorComponentEffect.java" />
+        <option value="$PROJECT_DIR$/src/sample/Color.java" />
+        <option value="$PROJECT_DIR$/src/sample/GraphicsEffect.java" />
+        <option value="$PROJECT_DIR$/src/sample/TextEffect.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
       </list>
     </option>
   </component>
@@ -125,6 +182,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -148,7 +206,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -159,9 +216,11 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -268,17 +327,39 @@
       <workItem from="1561056913300" duration="5712000" />
       <workItem from="1561225647369" duration="2024000" />
       <workItem from="1561296853180" duration="1137000" />
+      <workItem from="1562269299054" duration="1814000" />
+      <workItem from="1562317012281" duration="2133000" />
+      <workItem from="1562331846172" duration="600000" />
+      <workItem from="1562355670793" duration="1715000" />
+      <workItem from="1562404473893" duration="5332000" />
+      <workItem from="1562418474129" duration="10138000" />
+      <workItem from="1562493326186" duration="2869000" />
+      <workItem from="1562503166267" duration="3569000" />
+      <workItem from="1562529397407" duration="2178000" />
+      <workItem from="1562609743145" duration="3952000" />
+      <workItem from="1562695490511" duration="3685000" />
+      <workItem from="1562761333446" duration="1232000" />
+      <workItem from="1562776554002" duration="2507000" />
+      <workItem from="1562846940888" duration="640000" />
     </task>
+    <task id="LOCAL-00001" summary="Added TextEffect for adding text to images">
+      <created>1562612875863</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1562612875863</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11440000" />
+    <option name="totallyTimeSpent" value="53804000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22080536" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.26912752" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -288,7 +369,7 @@
       <window_info id="UI Designer" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26487252" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26487252" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -299,12 +380,12 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="15" />
       <window_info anchor="bottom" id="Terminal" order="16" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="JetGradle" order="3" />
       <window_info anchor="right" id="Database" order="4" />
@@ -314,6 +395,7 @@
       <window_info anchor="right" id="Capture Analysis" order="8" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
       <window_info anchor="right" id="Theme Preview" order="10" />
+      <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="11" side_tool="true" weight="0.3295302" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,16 +404,22 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="Added TextEffect for adding text to images" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added TextEffect for adding text to images" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/sample/ColorComponent.java" />
+    <entry file="file://$PROJECT_DIR$/src/sample/GraphicsEffect.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -340,18 +428,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="34" column="78" selection-start-line="34" selection-start-column="78" selection-end-line="34" selection-end-column="78" />
+        <state relative-caret-position="1054">
+          <caret line="92" column="67" selection-start-line="92" selection-start-column="67" selection-end-line="92" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/TextEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ColorComponentEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Color.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="24" column="66" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+          <caret line="41" column="79" lean-forward="true" selection-start-line="41" selection-start-column="79" selection-end-line="41" selection-end-column="79" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />

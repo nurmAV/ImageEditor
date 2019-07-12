@@ -13,7 +13,7 @@ public class SharpnessTools extends HBox {
     @FXML public Slider blurSlider, sharpenSlider;
 
     public SharpnessTools() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("SharpnessTools.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/SharpnessTools.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try {

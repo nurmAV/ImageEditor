@@ -47,6 +47,7 @@
                   <Button fx:id="blur" mnemonicParsing="false" text="Blur" />
                </children>
             </HBox>
+            <Pane fx:id="controlsPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #777;" />
          </children>
       </VBox>
       <HBox fx:id="middleRow" alignment="TOP_CENTER" prefHeight="663.0" prefWidth="1296.0" style="-fx-background-color: #EFEFEF;" VBox.vgrow="ALWAYS">
