@@ -35,7 +35,7 @@ import java.util.Stack;
 public class Controller implements Initializable {
 
     @FXML
-    public VBox layout, controlVBox;
+    public VBox layout, controlVBox, fileInfo;
     @FXML
     public ImageView workingImage;
     @FXML
@@ -47,6 +47,8 @@ public class Controller implements Initializable {
     @FXML
     public Button blur, sobelX, sobelY, edge, grayscale, redness, greenness, blueness, alpha, text;
     @FXML public AnchorPane imageBG;
+
+    private ControlPane controlPane = new ControlPane();
 
 
 
@@ -77,6 +79,7 @@ public class Controller implements Initializable {
 
         //text.setOnMouseClicked(e ->changeImage(textEffect.apply(workingBufferedImage, "Text",  50, 50, new Color())));
 
+        fileInfo.getChildren().add(controlPane);
         undoItem.setOnAction( e -> undo());
         undoItem.setDisable(true);
 

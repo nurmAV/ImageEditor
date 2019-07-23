@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         setUserAgentStylesheet(STYLESHEET_CASPIAN);
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../view/sample.fxml"));
         primaryStage.setTitle("Image Editor");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
