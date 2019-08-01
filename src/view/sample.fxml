@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -31,25 +30,20 @@
           </Menu>
         </menus>
       </MenuBar>
-      <VBox fx:id="controlVBox" prefHeight="108.0" prefWidth="1296.0">
+      <HBox fx:id="toolRibbon" alignment="CENTER" prefHeight="42.0" prefWidth="1296.0" style="-fx-background-color: linear-gradient(#888, #555);">
          <children>
-            <HBox fx:id="toolRibbon" alignment="CENTER" prefHeight="42.0" prefWidth="1296.0" style="-fx-background-color: linear-gradient(#888, #555);">
-               <children>
-                  <Button fx:id="sobelY" mnemonicParsing="false" text="SobelY" />
-                  <Button fx:id="sobelX" mnemonicParsing="false" text="SobelX" />
-                  <Button fx:id="edge" mnemonicParsing="false" text="Edge" />
-                  <Button fx:id="grayscale" mnemonicParsing="false" text="Grayscale" />
-                  <Button fx:id="redness" mnemonicParsing="false" text="Redness" />
-                  <Button fx:id="greenness" mnemonicParsing="false" text="Greenness" />
-                  <Button fx:id="blueness" mnemonicParsing="false" text="Blueness" />
-                  <Button fx:id="alpha" mnemonicParsing="false" text="Alpha" />
-                  <Button fx:id="text" mnemonicParsing="false" text="Add text" />
-                  <Button fx:id="blur" mnemonicParsing="false" text="Blur" />
-               </children>
-            </HBox>
-            <Pane fx:id="controlsPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #777;" />
+            <Button fx:id="sobelY" mnemonicParsing="false" text="SobelY" />
+            <Button fx:id="sobelX" mnemonicParsing="false" text="SobelX" />
+            <Button fx:id="edge" mnemonicParsing="false" text="Edge" />
+            <Button fx:id="grayscale" mnemonicParsing="false" text="Grayscale" />
+            <Button fx:id="redness" mnemonicParsing="false" text="Redness" />
+            <Button fx:id="greenness" mnemonicParsing="false" text="Greenness" />
+            <Button fx:id="blueness" mnemonicParsing="false" text="Blueness" />
+            <Button fx:id="alpha" mnemonicParsing="false" text="Alpha" />
+            <Button fx:id="text" mnemonicParsing="false" text="Add text" />
+            <Button fx:id="blur" mnemonicParsing="false" text="Blur" />
          </children>
-      </VBox>
+      </HBox>
       <HBox fx:id="middleRow" alignment="TOP_CENTER" prefHeight="663.0" prefWidth="1296.0" style="-fx-background-color: #EFEFEF;" VBox.vgrow="ALWAYS">
          <children>
             <VBox prefHeight="758.0" prefWidth="257.0" style="-fx-background-color: linear-gradient(#555, #666);" HBox.hgrow="NEVER" />
@@ -81,7 +75,7 @@
       </HBox>
       <AnchorPane prefHeight="25.0" prefWidth="1296.0" style="-fx-background-color: linear-gradient(#666, #777);">
          <children>
-            <Text fx:id="Status" fill="#efefef" layoutX="22.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ready." />
+            <Label fx:id="status" layoutX="46.0" layoutY="2.0" text="Ready." textFill="#efefef" />
          </children></AnchorPane>
    </children>
 </VBox>

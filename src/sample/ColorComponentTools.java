@@ -4,11 +4,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class ColorComponentTools extends HBox {
+public class ColorComponentTools extends VBox {
 
     @FXML public Slider redSlider, greenSlider, blueSlider, alphaSlider;
 

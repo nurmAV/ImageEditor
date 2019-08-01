@@ -2,12 +2,14 @@ package sample;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
@@ -20,7 +22,6 @@ import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.WindowEvent;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.ConvolveOp;
@@ -44,14 +45,19 @@ public class Controller implements Initializable {
     public HBox middleRow, toolRibbon;
     @FXML
     public Text filename;
+    @FXML public Label status;
     @FXML
     public Button blur, sobelX, sobelY, edge, grayscale, redness, greenness, blueness, alpha, text;
     @FXML public AnchorPane imageBG;
 
-    private ControlPane controlPane = new ControlPane();
+    public ControlPane controlPane = new ControlPane();
+    public SharpnessTools sharpnessTools = controlPane.getSharpnessTools();
+    public ColorComponentTools colorComponentTools = controlPane.getColorComponentTools();
 
-
-
+    public Slider redSlider = colorComponentTools.getRedSlider();
+    public Slider greenSlider = colorComponentTools.getGreenSlider();
+    public Slider blueSlider = colorComponentTools.getBlueSlider();
+    public Slider alphaSlider = colorComponentTools.getAlphaSlider();
     private BufferedImage workingBufferedImage   = null;
 
     private ColorComponentEffect alphaEffect     = new ColorComponentEffect(Color.ALPHA);
@@ -71,11 +77,11 @@ public class Controller implements Initializable {
         edge     .setOnAction(   e -> changeImage(completeSobel()));
         grayscale.setOnAction(e -> changeImage(grayscale()));
 
-        redness  .setOnMouseClicked(e -> changeImage(rednessEffect.filter(workingBufferedImage, 1.5f)));
-        greenness.setOnMouseClicked(e -> changeImage(greennessEffect.filter(workingBufferedImage, 1.5f)));
-        blueness .setOnMouseClicked(e -> changeImage(bluenessEffect.filter(workingBufferedImage, 1.5f)));
-        alpha    .setOnMouseClicked(e -> changeImage(alphaEffect.filter(workingBufferedImage, 1.5f)));
-        controlVBox.getChildren().add(new SharpnessTools());
+        redness  .setOnMouseClicked(e -> changeImage(rednessEffect.filter(workingBufferedImage, 1.5)));
+        greenness.setOnMouseClicked(e -> changeImage(greennessEffect.filter(workingBufferedImage, 1.5)));
+        blueness .setOnMouseClicked(e -> changeImage(bluenessEffect.filter(workingBufferedImage, 1.5)));
+        alpha    .setOnMouseClicked(e -> changeImage(alphaEffect.filter(workingBufferedImage, 1.5)));
+        //controlVBox.getChildren().add(new SharpnessTools());
 
         //text.setOnMouseClicked(e ->changeImage(textEffect.apply(workingBufferedImage, "Text",  50, 50, new Color())));
 
@@ -83,11 +89,19 @@ public class Controller implements Initializable {
         undoItem.setOnAction( e -> undo());
         undoItem.setDisable(true);
 
+        redSlider.valueProperty().addListener(
+                e -> changeImage(rednessEffect.filterThreaded(workingBufferedImage,  redSlider.getValue())));
 
+        greenSlider.valueProperty().addListener(
+                e -> changeImage(greennessEffect.filterThreaded(workingBufferedImage, greenSlider.getValue())));
 
+        blueSlider.valueProperty().addListener(
+                e -> changeImage(bluenessEffect.filterThreaded(workingBufferedImage, blueSlider.getValue())));
 
-
+        alphaSlider.valueProperty().addListener(
+                e -> changeImage(alphaEffect.filterThreaded(workingBufferedImage, alphaSlider.getValue())));
     }
+
 
     public void open() {
         FileChooser fc = new FileChooser();
@@ -97,7 +111,9 @@ public class Controller implements Initializable {
         workingImage.fitWidthProperty().bind(imageBG.widthProperty());
         try {
             BufferedImage bi = ImageIO.read(file);
-            workingBufferedImage = bi;
+            workingBufferedImage = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+            workingBufferedImage.getGraphics().drawImage(bi, 0, 0, null);
             workingImage.setImage(SwingFXUtils.toFXImage(bi, null));
             //workingImage.fitHeightProperty().bind(imageBG.heightProperty());
             imageStack.push(workingBufferedImage);
@@ -135,6 +151,7 @@ public class Controller implements Initializable {
 
 
     public BufferedImage blur(BufferedImage img, int size) {
+        changeStatus("Blurring...");
         BufferedImage res = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         float[] data = new float[size * size];
         for(int i = 0; i < size * size; i++) {
@@ -153,7 +170,7 @@ public class Controller implements Initializable {
      * @return the filtered image as BufferedImage
      */
     public BufferedImage sobelY(BufferedImage img) {
-
+        changeStatus("Sobel Y ...");
         BufferedImage dest = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         float[] data = {-1, 0, 1,
                         -2, 0, 2,
@@ -169,7 +186,7 @@ public class Controller implements Initializable {
      * @return the filtered image as BufferedImage
      */
     public BufferedImage sobelX(BufferedImage img) {
-
+        changeStatus("Sobel X ...");
         BufferedImage dest = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         float[] data = {-1, -2, -1,
                          0,  0,  0,
@@ -192,9 +209,11 @@ public class Controller implements Initializable {
     public BufferedImage completeSobel(BufferedImage img) {
 
         BufferedImage res = blur(grayscale(),5);
+
         BufferedImage x = sobelX(res);
         BufferedImage y = sobelY(res);
 
+        changeStatus("Combinging...");
         for(int i = 0; i < x.getWidth(); i++) {
             for(int j = 0; j < x.getHeight(); j++) {
                 int c1 = x.getRGB(i, j);
@@ -256,6 +275,7 @@ public class Controller implements Initializable {
         imageStack.push(workingBufferedImage);
         workingImage.setImage(SwingFXUtils.toFXImage(img, null));
         System.out.println("Image Stack Size: " +imageStack.size());
+        changeStatus("Ready.");
     }
 
     public void undo() {
@@ -266,5 +286,10 @@ public class Controller implements Initializable {
             System.out.println("Image Stack Size: " +imageStack.size());
         }else undoItem.setDisable(true);
     }
+
+    public void changeStatus(String statusText) {
+        status.setText(statusText);
+    }
+
 
 }

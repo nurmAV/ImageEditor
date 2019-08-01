@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="600.0" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="315.0" prefWidth="213.0" type="VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Red" />
-            <Slider fx:id="redSlider" max="3.0" min="-3.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Red">
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin></Text>
+            <Slider fx:id="redSlider" blockIncrement="0.1" max="3.0" min="0" value="1.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="5.0" />
                </VBox.margin>
             </Slider>
          </children>
@@ -23,13 +24,36 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </HBox.margin>
       </VBox>
-      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <Separator prefWidth="200.0" />
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Green" />
-            <Slider fx:id="greenSlider" max="3.0" min="-3.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Green">
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin></Text>
+            <Slider fx:id="greenSlider" blockIncrement="0.1" max="3.0" min="0" value="1.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="5.0" />
+               </VBox.margin>
+            </Slider>
+         </children>
+         <HBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </HBox.margin>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </VBox>
+      <Separator prefWidth="200.0" />
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Blue">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin></Text>
+            <Slider fx:id="blueSlider" blockIncrement="0.1" max="3.0" min="0" value="1.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="5.0" />
                </VBox.margin>
             </Slider>
          </children>
@@ -37,27 +61,16 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </HBox.margin>
       </VBox>
-      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <Separator prefWidth="200.0" />
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Blue" />
-            <Slider fx:id="blueSlider" max="3.0" min="-3.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Alpha">
                <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Slider>
-         </children>
-         <HBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </HBox.margin>
-      </VBox>
-      <Separator orientation="VERTICAL" prefHeight="200.0" />
-      <VBox prefHeight="200.0" prefWidth="100.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Alpha" />
-            <Slider fx:id="alphaSlider" max="3.0" min="-3.0">
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin></Text>
+            <Slider fx:id="alphaSlider" blockIncrement="0.1" max="3.0" min="0" value="1.0">
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets left="10.0" right="10.0" top="5.0" />
                </VBox.margin>
             </Slider>
          </children>
